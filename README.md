@@ -1,2 +1,2 @@
 # Basics
-Sample data structure and algorithms
+Sample data structures and algorithms
