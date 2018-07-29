@@ -6,3 +6,4 @@ def findTwoSum(arr, value):
       if(arr[j]== member):
         return [arr[i], arr[j]]
   return []
+print(findTwoSum([1,3], 4))
