@@ -10,5 +10,4 @@ def binarySearch(array, targetValue):
     else:
       min = mid + 1
   return -1 
-# print(binarySearch([1,2,3], 1))
-print("Hello")
+print(binarySearch([1,2,3], 1))
