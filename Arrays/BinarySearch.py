@@ -8,5 +8,7 @@ def binarySearch(array, targetValue):
     elif(targetValue < array[mid]):
       max = mid - 1
     else:
-      min = mid -1
+      min = mid + 1
   return -1 
+# print(binarySearch([1,2,3], 1))
+print("Hello")
