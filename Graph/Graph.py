@@ -1,3 +1,20 @@
+class Queue:
+
+    def __init__(self):
+        self.items = []
+    
+    def enqueue(self, item):
+        self.items.insert(0, item)
+    
+    def dequeue(self):
+       return self.items.pop()
+    
+    def isEmpty(self):
+        return self.items == []
+
+    def size(self):
+        return len(self.items)
+
 class Node:
 
     def __init__(self, data):
@@ -94,33 +111,68 @@ class LinkedList:
         while(temp):
             print(temp.data, end=' ')
             temp = temp.next
-
-
+# This implementation of the Graph uses adjacency list and
+# it uses linked list and indexex of the information added to the graph
 class Graph:
     def __init__(self, vertices):
-        self.vertices= vertices
+        self.vertices = vertices
         self.array = []
         for _ in range(vertices):
             temp = LinkedList()
             self.array.append(temp)
+    
     def addEdge(self, source, destination):
         self.array[source].push(destination)
     
     def printGraph(self):
         print(">>Adjacency List of Directed Graph<<")
         print()
-        
         for i in range(self.vertices):
-            
-            print("|", i, "| => ", temp = self.array[i].head 
+            print("|", i, "| => ", end="")
+            temp = self.array[i].head
             while temp != None:
-                print("[" , temp.data, "] -> ", temp = temp.next)       
-                print("None")
+                print("[" , temp.data, "] -> ", end="")
+                temp = temp.next       
+            print("None")
 
 
-g =  Graph(4)
+def bfsTraversal(g):
+    result = ""
+    num_of_vertices = g.vertices
+	#Alist to hold the history of visited nodes
+	#Make a node visited whenever you enqueue it into queue
+    visited = []
+    for _ in range(num_of_vertices):
+        visited.append(False)
+    #Create Queue(implemented in previous lesson) for Breadth First Traversal and enqueue source in it
+    queue = Queue()
+    queue.enqueue(0)
+    visited[0] = True
+    #Traverse while queue is not empty
+    while(queue.isEmpty() == False):
+        #Dequeue a vertex/node from queue and add it to result
+        index = queue.dequeue()
+        result += str(index)
+    	#Get adjacent vertices to the index from the list,
+	    #and if they are not already visited then enqueue them in the Queue
+        temp = g.array[index].head
+        while (temp != None):
+            if(visited[temp.data] == False):
+                queue.enqueue(temp.data)
+                visited[index] = True #Visit the current Node
+            temp = temp.next
+    return result #For the above graph it should return "01234" or "02143"
+             
+# 0, 1, 2, 3, 4 are all indexes of the actual information we are creating a graph from
+#i.e: Array["first", "second", "Third", "Forth", "Fifth"] you can create a graph as follows
+# 0 means first and 1 ...
+g =  Graph(5)
 g.addEdge(0, 1)
 g.addEdge(0, 2)
 g.addEdge(1, 3)
-g.addEdge(2, 3)
+g.addEdge(1, 4)
+
 g.printGraph()
+
+result = bfsTraversal(g)
+print(result)
