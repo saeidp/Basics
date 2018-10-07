@@ -15,6 +15,25 @@ class Queue:
     def size(self):
         return len(self.items)
 
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def peek(self):
+        return self.items[len(self.items) - 1]
+
+    def size(self):
+        return len(self.items)
+
 class Node:
 
     def __init__(self, data):
@@ -162,7 +181,34 @@ def bfsTraversal(g):
                 visited[index] = True #Visit the current Node
             temp = temp.next
     return result #For the above graph it should return "01234" or "02143"
-             
+
+def dfsTraverse(g):
+        result = ""
+        num_of_vertices = g.vertices
+        visited = []
+        for _ in range(num_of_vertices):
+            visited.append(False)
+        stack = Stack()
+        stack.push(0)
+        visited[0] = True
+        while stack.isEmpty() == False:
+            item = stack.pop()
+            result += str(item)
+            temp = g.array[item].head
+            while temp !=None:
+                if(visited[temp.data] == False):
+                    stack.push(temp.data)
+                    visited[temp.data] = True
+                temp = temp.next
+        return result #For the above graph it should return 01342
+
+
+
+
+
+
+
+
 # 0, 1, 2, 3, 4 are all indexes of the actual information we are creating a graph from
 #i.e: Array["first", "second", "Third", "Forth", "Fifth"] you can create a graph as follows
 # 0 means first and 1 ...
@@ -173,6 +219,11 @@ g.addEdge(1, 3)
 g.addEdge(1, 4)
 
 g.printGraph()
+#| 0 | => [ 2 ] -> [ 1 ] -> None
+#| 1 | => [ 4 ] -> [ 3 ] -> None
+#| 2 | => None
+#| 3 | => None
+#| 4 | => None
 
-result = bfsTraversal(g)
+result = dfsTraverse(g)
 print(result)
