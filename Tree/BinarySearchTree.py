@@ -40,6 +40,23 @@ class binarySearchTree:
                     return True
                 current = right
         return False
+    
+    def search(self, value):
+        if self.isEmpty():
+            return "List is Empty!"
+        current = self.root
+        while current != None:
+            if current.data == value:
+                return str(current.data)
+            if current.data > value:
+                current = current.left
+            else:
+                current = current.right
+        return str(value) + " is not in the tree!"
+
+
+
+
 
 def mainAdd():
     bst = binarySearchTree(6)
@@ -52,6 +69,10 @@ def mainAdd():
     bst.add(10)
     bst.add(14)
     bst.printTree(bst.root)
+    print()
+
+    result = bst.search(19) #19 is not in the tree!
+    print(result)
                 
 mainAdd() # 6 4 2 5 9 8 12 10 14
 
