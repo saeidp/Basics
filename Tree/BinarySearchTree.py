@@ -53,12 +53,42 @@ class binarySearchTree:
             else:
                 current = current.right
         return str(value) + " is not in the tree!"
+    
+    
+    #Pre Order Traversal: root-left-right
+    def preTraverse(self, root):
+        if root == None:
+            return
+        print(str(root.data), end=" ")
+        self.preTraverse(root.left)
+        self.preTraverse(root.right)
+    
+    #In Order Traversal: left-root-right
+    def inTraverse(self, root):
+        if root == None:
+            return
+        self.inTraverse(root.left)
+        print(str(root.data), end = " ")
+        self.inTraverse(root.right)
 
-
+    #Post Order Traversal: left-right-root
+    def postTraverse(self, root):
+        if(root == None):
+            return
+        self.postTraverse(root.left)
+        self.postTraverse(root.right)
+        print(str(root.data), end = " ")
+        
 
 
 
 def mainAdd():
+    
+        #6
+  #4           #9
+#2  #5     #8      #12
+                #10   #14  
+   
     bst = binarySearchTree(6)
     bst.add(4)
     bst.add(9)
@@ -69,10 +99,19 @@ def mainAdd():
     bst.add(10)
     bst.add(14)
     bst.printTree(bst.root)
+    print()  #6 4 2 5 9 8 12 10 14
+
+    result = bst.search(19) 
+    print(result) #19 is not in the tree!
+
+    bst.preTraverse(bst.root) #6 4 2 5 9 8 12 10 14
     print()
 
-    result = bst.search(19) #19 is not in the tree!
-    print(result)
-                
-mainAdd() # 6 4 2 5 9 8 12 10 14
+    bst.inTraverse(bst.root) #2 4 5 6 8 9 10 12 14
+    print()
+
+    bst.postTraverse(bst.root) #2 5 4 8 10 14 12 9 6
+    print()
+
+mainAdd()
 
