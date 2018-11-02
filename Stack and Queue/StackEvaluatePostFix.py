@@ -17,6 +17,8 @@ class Stack:
     def size(self):
         return len(self.items)
 
+#you have to implement evaluatePostFix() function which will take
+# a mathematical expression as an input and return the result of that expression
 def evaluatePostFix(exp):
     stack = Stack()
     
