@@ -47,7 +47,7 @@ class LinkedList:
         self.head = None
 
     # Functio to insert a new node at the beginning
-    def push(self, new_data):
+    def insertAtHead(self, new_data):
 
         new_node = Node(new_data)
 
@@ -72,7 +72,7 @@ class LinkedList:
 
     # This function is defined in Linked List class
     # Appends a new node at the end.
-    def append(self, new_data):
+    def insertAtTail(self, new_data):
 
         # 1. Create a new node
         # 2. Put in the data
@@ -141,7 +141,7 @@ class Graph:
             self.array.append(temp)
     
     def addEdge(self, source, destination):
-        self.array[source].push(destination)
+        self.array[source].insertAtHead(destination)
     
     def printGraph(self):
         print(">>Adjacency List of Directed Graph<<")
