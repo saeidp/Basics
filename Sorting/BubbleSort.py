@@ -13,3 +13,18 @@ def bubbleSort(arr):
 arr = [3,2,13,4,6,5,7,8,1,20]
 bubbleSort(arr)
 print(arr)
+
+#-----------------------------
+
+#This one put the smallest at the start
+def bubbleSort2(arr):
+    for i in range (len(arr) - 1):
+        for j in range(i+1, len(arr)-1):
+            if arr[i] > arr[j]:
+                arr[i] , arr[j] =arr[j] , arr[i]
+
+arr = [3,2,13,4,6,5,7,8,1,20]
+bubbleSort2(arr)
+print(arr)
+
+
