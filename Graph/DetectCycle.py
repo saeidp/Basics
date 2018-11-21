@@ -148,7 +148,7 @@ class Graph:
 def detectCycle(g, source):
     num_of_vertices = g.vertices
     visited = []
-    for x in range(num_of_vertices):
+    for _ in range(num_of_vertices):
         visited.append(False)
     stack = Stack()
     stack.push(source)

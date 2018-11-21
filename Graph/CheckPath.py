@@ -169,7 +169,7 @@ def checkPath(g, source, destination):
     #A list to hold the history of visited nodes (by default all false)
     #Make a node visited whenever you push it into stack
     visited = []
-    for x in range(g.vertices):
+    for _ in range(g.vertices):
         visited.append(False)
     #Create Stack
     stack =  Stack()
