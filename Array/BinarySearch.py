@@ -1,3 +1,4 @@
+# O(logn) and memory O(1)
 def binarySearch(array, key):
   min = 0
   max = len(array) -1
@@ -15,6 +16,7 @@ index = binarySearch(a, 5)
 print(index)
 
 # Recursive Version of Binary Search
+# O(logn) memory: O(logn)
 def binarySearchRecursive(array, key, low, high):
   if low > high:
     return -1
