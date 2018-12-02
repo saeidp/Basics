@@ -13,27 +13,24 @@ class Heap:
     # compares it with the key at parent node. It swaps if 
     # childNode >= parentNode. The while loop makes sure that 
     # the nodes keep swapping until heap property is satisfied.
-    def maxHeapify(self, heaplist, index, heapSize):
+    def maxHeapify(self, heapList, index, heapSize):
         largest = index
         while(largest < heapSize // 2):
             left = 2 * index + 1
             right = 2 * index + 2
-            if left < heapSize and heaplist[left] > heaplist[index]:
+            if left < heapSize and heapList[left] > heapList[index]:
                 largest = left
-            if right < heapSize and heapList[right] > heaplist[largest]:
+            if right < heapSize and heapList[right] > heapList[largest]:
                 largest = right
             if largest != index:
                 heapList[index],heapList[largest] = heapList[largest], heapList[index]
-                # temp=heaplist[index]
-                # heaplist[index] = heaplist[largest]
-                # heaplist[largest] = temp
                 index = largest
             else:
                 break
     
-    def BuildMaxHeap(self, heaplist, heapSize):
+    def BuildMaxHeap(self, heapList, heapSize):
         for i in range((heapSize - 1)//2, -1, -1):
-            self.maxHeapify(heaplist, i, heapSize)
+            self.maxHeapify(heapList, i, heapSize)
     
     # Min Heap follows Min Heap property which means the key at the
     # parent node is always smaller than keys at both child nodes
@@ -55,9 +52,9 @@ class Heap:
                 index = smallest
             else:
                 break
-    def BuildMinHeap(self, heaplist, heapSize):
+    def BuildMinHeap(self, heapList, heapSize):
         for i in range((heapSize - 1)//2, -1, -1):
-            self.minHeapify(heaplist, i, heapSize)
+            self.minHeapify(heapList, i, heapSize)
     
 
 heapList = [1, 4, 7, 12, 15, 14, 9, 2, 3, 16]
