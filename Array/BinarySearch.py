@@ -3,7 +3,7 @@ def binarySearch(array, key):
   min = 0
   max = len(array) -1
   while(min <= max):
-    mid = min + (max - min) // 2
+    mid = (max + min) // 2
     if(array[mid] == key):
       return mid
     elif(key < array[mid]):
@@ -20,7 +20,7 @@ print(index)
 def binarySearchRecursive(array, key, low, high):
   if low > high:
     return -1
-  mid = low + (high - low) // 2
+  mid = (high + low) // 2
   if(array[mid] == key):
     return mid
   elif(key < array[mid]):
