@@ -18,6 +18,6 @@ def findFirstUnique(arr):
 
 
 index = findFirstUnique([2,3,6,6,3,7,3,2])
-print(index)
+print(index) # -> 7
 
 
