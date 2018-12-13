@@ -6,24 +6,39 @@
 # is smaller than or equal to W. You cannot break an item, either pick the complete item,
 # or don’t pick it (0-1 property).
 
-# Returns the maximum value that can be put in a knapsack of # capacity W 
-def knapSack(W , wt , val , n): 
-    # Base Case 
-    if n == 0 or W == 0 : 
-        return 0
-    # If weight of the nth item is more than Knapsack of capacity 
-    # W, then this item cannot be included in the optimal solution 
-    if (wt[n-1] > W): 
-        return knapSack(W , wt , val , n-1) 
-  
-    # return the maximum of two cases: 
-    # (1) nth item included 
-    # (2) not included 
-    else: 
-        return max(val[n-1] + knapSack(W-wt[n-1] , wt , val , n-1), knapSack(W , wt , val , n-1))
+# This implemetation is in StackExchange as follows:
+#  https://codereview.stackexchange.com/questions/150677/knapsack-greedy-algorithm-in-python
+def get_optimal_value(capacity, weights, values):
+    value = 0.
+    valuePerWeight = valuePerWeight = sorted([[v / w, w] for v,w in zip(values,weights)], reverse=True)
+    while capacity > 0 and valuePerWeight:
+        maxi = 0
+        idx = None
+        for i,item in enumerate(valuePerWeight):
+            if item [1] > 0 and maxi < item [0]:
+                maxi = item [0]
+                idx = i
 
-val = [60, 100, 120] 
-wt = [10, 20, 30] 
-W = 50
-n = len(val) 
-print(knapSack(W , wt , val , n)) #220
+        if idx is None:
+            return 0.
+
+        v = valuePerWeight[idx][0]
+        w = valuePerWeight[idx][1]
+
+        if w <= capacity:
+            value += v*w
+            capacity -= w
+        else:
+            if w > 0:
+                value += capacity * v
+                return value
+        valuePerWeight.pop(idx)
+
+    return value
+
+n = 3
+capacity = 50
+values = [60, 100, 120]
+weights = [20, 50, 30]
+opt_value = get_optimal_value(capacity, weights, values)
+print("{:.10f}".format(opt_value)) # print 180.0000000000
