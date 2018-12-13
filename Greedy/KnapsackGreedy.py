@@ -8,6 +8,11 @@
 
 # This implemetation is in StackExchange as follows:
 #  https://codereview.stackexchange.com/questions/150677/knapsack-greedy-algorithm-in-python
+# A thief finds much more loot than his bag can fit. Help him to find the most valuable combination
+# of items assuming that any fraction of a loot item can be put into his bag.
+# The goal of this code problem is to implement an algorithm for the fractional knapsack problem.
+#  Output the maximal value of fractions of items that fit into the knapsack. 
+
 def get_optimal_value(capacity, weights, values):
     value = 0.
     valuePerWeight = valuePerWeight = sorted([[v / w, w] for v,w in zip(values,weights)], reverse=True)
@@ -36,6 +41,7 @@ def get_optimal_value(capacity, weights, values):
 
     return value
 
+#To achieve the value 180, we take the first item and the third item into the bag.
 n = 3
 capacity = 50
 values = [60, 100, 120]
