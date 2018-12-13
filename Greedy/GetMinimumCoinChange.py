@@ -5,25 +5,6 @@
 
 # input: 28
 # output: 10 + 10 + 5 + 1 + 1+ 1
-# a simplified version
-def GetChange(m):
-    coin1 = 1
-    coin5 = 5
-    coin10 = 10
-
-    coin10Num = m // coin10
-
-    remainder10 = m % coin10
-    remainder5 = remainder10 % coin5
-
-    coin5Num = remainder10 // coin5
-    coin1Num = remainder5 // coin1
- 
-    coinNumbers = coin10Num + coin5Num + coin1Num
-    return coinNumbers
-
-print(GetChange(2)) # 2
-print(GetChange(28)) #6
 
 # a generic version
 def getChange2(m):
@@ -38,3 +19,21 @@ def getChange2(m):
 
 print(GetChange(2)) # 2
 print(GetChange(28)) #6
+
+# a simplified version
+def GetChange(m):
+    coin1 = 1
+    coin5 = 5
+    coin10 = 10
+    coin10Num = m // coin10
+    remainder10 = m % coin10
+    remainder5 = remainder10 % coin5
+    coin5Num = remainder10 // coin5
+    coin1Num = remainder5 // coin1
+
+    coinNumbers = coin10Num + coin5Num + coin1Num
+    return coinNumbers
+
+print(GetChange(2)) # 2
+print(GetChange(28)) #6
+
