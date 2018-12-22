@@ -86,3 +86,43 @@ print(is_bst(root)) #False  50 < 125 < 100
 #  maximum value of its left sub-tree is less than node's
 # data and minimum value of its right sub-tree is greater
 #  than node's data
+def tree_max(node):
+    if not node:
+        return float("-inf")
+    maxleft  = tree_max(node.left)
+    maxright = tree_max(node.right)
+    return max(node.data, maxleft, maxright)
+
+def tree_min(node):
+    if not node:
+        return float("inf")
+    minleft  = tree_min(node.left)
+    minright = tree_min(node.right)
+    return min(node.data, minleft, minright)
+
+def verify(node):
+    if not node:
+        return True
+    if (tree_max(node.left) <= node.data <= tree_min(node.right) and
+        verify(node.left) and verify(node.right)):
+        return True
+    else:
+        return False
+
+root = Node(100)
+root.left = Node(50)
+root.right = Node(200)
+root.left.left = Node(25)
+root.left.right = Node(75)
+root.right.left = Node(125)
+root.right.right = Node(350)
+print(verify(root)) #True
+
+root = Node(100)
+root.left = Node(50)
+root.right = Node(200)
+root.left.left = Node(25)
+root.left.right = Node(125)
+root.right.left = Node(150)
+root.right.right = Node(350)
+print(is_bst(root)) #False  50 < 125 < 100
