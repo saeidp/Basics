@@ -2,13 +2,17 @@ class Node:
     def __init__(self,key):
         self.next = None
         self.data = key
+#---------------------------------------------
+# Given a singly linked list, write a function which takes
+# in the first node in a singly linked list and returns a
+# boolean indicating if the linked list contains a "cycle".
 
 def detectLoopUsingDictionary(head):
     if(head == None or head.next == None):
         return False
     s = set()
     current = head
-    while (current != None):
+    while current != None:
         if current.data in s:
             return True
         else:
@@ -19,11 +23,11 @@ def detectLoopUsingDictionary(head):
 # If slow_p and fast_p meet at some point then there is a loop 
 def detectLoop(head):
     slow_p = fast_p = head
-    while(slow_p and fast_p and fast_p.next):
+    while slow_p and fast_p and fast_p.next:
         slow_p = slow_p.next
         fast_p = fast_p.next.next
 
-        if(slow_p == fast_p):
+        if slow_p == fast_p:
             return True
     return False
 
