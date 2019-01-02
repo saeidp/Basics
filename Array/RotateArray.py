@@ -34,7 +34,48 @@ def rotateArray2(arr):
 arr = [1,2,3,4,5]
 rotateArray2(arr)
 print(arr)
+
+# if rotate for k elements and in o(n) and o(n) space
+# The above algorith is not useful as it exceed limit of time
+def rotate(nums, k):
+    """
+    :type nums: List[int]
+    :type k: int
+    :rtype: void Do not return anything, modify nums in-place instead.
+    """
+    index = len(nums) - 1
+    arr = []
+    for i in range(k):
+        arr.insert(0, nums[index - i])
+    for j in range (0, len(nums) - k):
+        arr.append(nums[j])
+    for i in range(len(nums)):
+        nums[i] = arr[i]
     
 
+nums =  [1,2,3,4,5]
+rotate(nums, 1)
+print(nums)
 
+
+# Original List                   : 1 2 3 4 5 6 7
+# After reversing all numbers     : 7 6 5 4 3 2 1
+# After reversing first k numbers : 5 6 7 4 3 2 1
+# After revering last n-k numbers : 5 6 7 1 2 3 4 --> Result
+# O(n) and o(1) space
+def reverse(nums, start, end):
+    while start < end:
+        nums[start], nums[end] = nums[end], nums[start]
+        start += 1
+        end += 1
+
+def rotate2(nums, k):
+    k %= len(nums) # to make sure k is not larger than the array
+    reverse(nums, 0, len(nums) - 1)
+    reverse(nums, 0, k - 1)
+    reverse(nums, k, len(nums) - 1)
+
+nums =  [1,2,3,4,5]
+rotate(nums, 1)
+print(nums)
 
