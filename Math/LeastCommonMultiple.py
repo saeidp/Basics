@@ -16,6 +16,6 @@ def least_common_multiple(a, b):
     return (a * b) / gcd
 
 
-d = least_common_multiple(6, 8)
-print(d)
+d = least_common_multiple(4, 6)
+print(d) #12
 
