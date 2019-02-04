@@ -2,14 +2,11 @@
 # number on the index itself.
 def findProduct(arr):
   result = []
-  if len(arr) == 1:
-    result.append(0)
-    return result
-  for i in arr:
+  for i in range(len(arr)):
     product = 1
-    for j in arr:
+    for j in range(len(arr)):
       if(i != j):
-        product *= j
+        product *= arr[j]
     result.append(product)
   return result
 
