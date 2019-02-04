@@ -1,4 +1,17 @@
-# An Anagram Detection Example. 
+# o be an anagram the arrangement of letters must make a word - that is, an anagram of a word must have a meaning.
+# but in here both are concidering the same
+#O(nlogn)
+# If two strings are permutations, then we know they have the same characters, 
+# but in different orders. Therefore, sorting the strings will put the characters
+# from two permutations in the same order. We just need to compare the sorted versions of the strings.
+def isPermutation(s,t):
+    if len(s) != len(t):
+        return False
+    return sorted(s) == sorted(t)
+
+print(isPermutation("abc", "cba")) # True
+# ----------------------------------------------------------------------
+# An Anagram Detection Example. O(n)
 # One string is an anagram of another if the second is simply a rearrangement of the first. For example,
 # 'heart' and 'earth' are anagrams. The strings 'python' and 'typhon' are anagrams as well. For the sake of simplicity,
 # we will assume that the two strings in question are of equal length and that they are made up of symbols from the set
