@@ -1,4 +1,4 @@
-# iven an array of integers. All numbers occur twice except one number which occurs once. 
+# in an array of integers. All numbers occur twice except one number which occurs once. 
 # Find the number in O(n) time & constant extra space.
 
 # Example:
