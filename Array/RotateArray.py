@@ -21,7 +21,7 @@ def rotateArray(arr):
 arr = [1,2,3,4,5]
 rotateArray(arr)
 print(arr)
-
+#-------------------------------------------
 def rotateArray2(arr):
     index = len(arr) - 1
     temp = arr[index]
@@ -34,7 +34,7 @@ def rotateArray2(arr):
 arr = [1,2,3,4,5]
 rotateArray2(arr)
 print(arr)
-
+#-------------------------------------------
 # if rotate for k elements and in o(n) and o(n) space
 # The above algorith is not useful as it exceed limit of time
 def rotate(nums, k):
@@ -56,7 +56,7 @@ def rotate(nums, k):
 nums =  [1,2,3,4,5]
 rotate(nums, 1)
 print(nums)
-
+#-------------------------------------------------
 
 # Original List                   : 1 2 3 4 5 6 7
 # After reversing all numbers     : 7 6 5 4 3 2 1
