@@ -3,8 +3,8 @@
 # of characters which reads the same backwards as it reads
 # forwards.
 
-# input -> aabbbbaa
-# output -> aa, bb, bbb, abbba, aabbbbaa, bb, aa
+# input -> aabbbaa
+# output -> aa, aabbbaa, abbba bb, bbb, bb, aa
 # O(n^3), and memory o(1)
 
 # A naive solution of this problem is to find all substrings of
