@@ -5,16 +5,12 @@
 
 # this solution uses extra memory
 # to keep all characters present in string.
-def remove_duplicates_1(s):
-    seen = set()
+def remove_duplicates(s):
     result = []
     for item in s:
-        if item not in seen:
-            seen.add(item)
+        if item not in result:
             result.append(item)
-    return result
-
+    return ''.join(result)
 
 s = "abbabcddbabcdeedebc"
-s = remove_duplicates_1(s)
-print(''.join(s))
+print(remove_duplicates(s))
