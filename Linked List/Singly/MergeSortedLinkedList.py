@@ -1,13 +1,13 @@
 class Node:
-    def __init__(self,key):
+    def __init__(self,data):
         self.next = None
-        self.data = key
+        self.data = data
 #----------------------------------------------------
 # Given two sorted linked lists, merge them such that
 # resulting linked list is also sorted.
-# head1 -> 4 ->8 -> 15 -> 19 -> null
-# head2 -> 7 -> 9 -> 10 ->16 -> null
-# head1 -> 4 -> 7 -> 8 -> 9 -> 10 -> 15 -> 16 -> 19 -> Null
+# 4 ->8 -> 15 -> 19 -> null
+# 7 -> 9 -> 10 ->16 -> null
+# output: 4 -> 7 -> 8 -> 9 -> 10 -> 15 -> 16 -> 19 -> Null
 # Linear, O(m + n) where m and n are lengths of both linked lists.
 
 def merge_sorted(head1, head2):
@@ -18,34 +18,31 @@ def merge_sorted(head1, head2):
   elif head2 == None:
       return head1
 
-  mergedHead = None
+  head = None
   if head1.data <= head2.data:
-      mergedHead = head1
+      head = head1
       head1 = head1.next
   else:
-      mergedHead = head2
+      head = head2
       head2 = head2.next
 
-  mergedTail = mergedHead
+  current = head
   
   while head1 != None and head2 != None:
-      temp = None
       if head1.data <= head2.data:
-          temp = head1
+          current.next = head1
           head1 = head1.next
       else:
-          temp = head2
+          current.next = head2
           head2 = head2.next
-
-      mergedTail.next = temp
-      mergedTail = temp
+      current = current.next
 
   if head1 != None:
-      mergedTail.next = head1
+      current.next = head1
   elif head2 != None:
-      mergedTail.next = head2
+      current.next = head2
 
-  return mergedHead
+  return head
 
 n1 = Node(4)
 n2 = Node(8)

@@ -2,61 +2,32 @@
 class Node:
     def __init__(self, data):
         self.data = data
-        self.nextElement = None
-
-class LinkedList:
-    def __init__(self):
-        self.headNode = Node(-1)
-
-    def isEmpty(self):
-        if(self.headNode.nextElement == None):
-            return True
-        else:
-            return False
-
-    def getHead(self):
-        return self.headNode
-
-    def printList(self):
-        if(self.isEmpty()):
-            print("List is Empty")
-            return False
-        temp = self.headNode.nextElement
-        while(temp.nextElement != None):
-            print(temp.data, "->", end=" ")
-            temp = temp.nextElement
-        print(temp.data, "-> None")
-        return True
-
-    def insertAtHead(self, data):
-        node = Node(data)
-        node.nextElement = self.headNode.nextElement
-        self.headNode.nextElement = node
-        return self.headNode
-
+        self.next = None
 #------------------------------------------------------
-# Access HeadNode => list.getHead()
-# Check if list is empty => list.isEmpty();
-# Node class  { int data ; Node nextElement;}
-def length(list):
+# input: 10-> 20-> 30-> 40
+# output: 4
+def linkedListLength(head):
     """
     Find Length of Linked List 
     """
-    if(list.isEmpty()):
+    if head == None:
         return 0
-    current = list.getHead()
-    length = 0
-    while(current.nextElement != None):
+    current = head
+    length = 1
+    while(current.next != None):
         length += 1
-        current = current.nextElement
-
+        current = current.next
     return length
 
+node0 = Node(10)
+node1 = Node(20)
+node2 = Node(30)
+node3 = Node (40)
+node0.next = node1
+node1.next =  node2
+node2.next = node3
+node3.next = None 
 
-list = LinkedList()
-for i in range(1, 10, 1):
-    list.insertAtHead(i)
-list.printList()
+length = linkedListLength(node0)
 
-listLength = length(list)
-print(listLength)
+print(length)
