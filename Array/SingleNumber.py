@@ -13,6 +13,22 @@
 # of occurrences is use value in hash table.
 #2) Traverse the array again and print the element with count 1 in hash table.
 # This solution works in O(n) time, but requires extra space.
+def findSingleNumberHashTable(arr):
+    hashTable = {}
+    for i in range(len(arr)):
+        k = arr[i] 
+        if  k in hashTable:
+            hashTable[k] += 1
+        else:
+            hashTable[k] = 1
+    for k,v in hashTable.items():
+        if v == 1:
+            return k
+    return -1
+
+arr = [7, 3, 5, 4, 5, 3, 4]
+print(findSingleNumberHashTable(arr))
+
 
 # The best Solution
 # a) XOR of a number with itself is 0.
