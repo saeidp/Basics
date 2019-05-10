@@ -89,7 +89,17 @@ class LinkedList:
         prev.next = temp.next
 
         temp = None
-
+    
+    def deleteNodeNew(self, key):
+        current = self.head
+        if current.data == key:
+            self.head = current.next
+            return
+        while current.next != None:
+            if current.next.data == key:
+                current.next = current.next.next
+            current = current.next
+   
     # Utility function to print the linked list
     def printList(self):
         temp = self.head
@@ -112,6 +122,7 @@ llist.insertAfter(llist.head.next, 8)
 print('Created linked list is:', end=' ')
 llist.printList()
 
-llist.deleteNode(6)
+#llist.deleteNode(6)
+llist.deleteNodeNew(6)
 print("\nLinked List after Deletion of 6:", end=' ')
 llist.printList()
